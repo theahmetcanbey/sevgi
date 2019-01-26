@@ -1,0 +1,72 @@
+body {
+	font: 13px arial;
+	color: #444;
+}
+
+#messages {
+	height: 300px;
+	width: 250px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+.container {
+	float: left;
+	min-height: 100px;
+	min-width: 250px;
+	display: inline-block;
+	margin: 2px;
+	padding: 2px;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	background: #f2f2f2;
+}
+
+.container > b {
+	display: block;
+	margin: 2px 0;
+	padding: 2px 0;
+	border-bottom: 1px solid #ddd;
+}
+
+.meMessage, .notMeMessage {
+	padding: 2px;
+	margin: 2px;
+	border: 1px solid rgba(221, 221, 221, 0.50);
+	border-radius: 2px;
+}
+
+.meMessage {
+	float: right;
+	background: #fefefe;
+}
+
+.notMeMessage {
+	float: left;
+	background: rgba(255, 202, 255, 0.1);
+}
+
+.clear {
+	clear: both;
+}
+
+.user {
+	cursor: pointer;
+}
+
+.user:focus, .user:hover {
+	text-decoration: underline;
+}
+
+.newMessage {
+	background: #fff;
+	border: 0;
+	border-top: 1px solid #ddd;
+	display: block;
+	width: 100%;
+	outline: none;
+}
+
+.newMessage:focus, .newMessage:hover {
+	border-color: #aaa;
+}

@@ -1,4 +1,53 @@
-<pre>
-her şeyi sana yazdım
-her şeye seni yazdım
-</pre>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" class="ico">
+	<link href="favicon.ico" rel="shortcut icon">
+	<link rel="icon" sizes="192x192" href="favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="referrer" content="origin">
+	<title>Sonsuz Sevgi</title>
+	<script src="https://snszsvg-direct.c9users.io/socket.io/socket.io.js"></script>
+	<script src="vue.min.js"></script>
+	<script src="jquery.min.js"></script>
+	<script src="lodash.min.js"></script>
+	<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+	<div id="rootContent">
+		<div class="container">
+			<b>Olmasını İstediğim Adım: {{socket.name}}</b>
+			<input type="text" v-model="myNameIs" @keypress.13="defineMyNameIs()">
+			<input type="button" value="Olsun" @click="defineMyNameIs()">
+		</div>
+		<div class="container">
+			<b>Kullanıcılar</b>
+			<div id="users">
+				<div v-for="user in users" v-if="user.name != socket.name">
+					<div class="user" @click="userClick(user.name);">
+						<b class="blink" title="New message">{{user.status > 0 ? user.status : ""}}</b>
+						{{user.name}}
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		<div class="container" v-show="selectedUser">
+			<b>{{selectedUser}}</b>
+			<div id="messages">
+				<div v-for="message in messages">
+					<div class="message" :class="{'meMessage': message.from == socket.name, 'notMeMessage': message.from != socket.name}">
+						{{message.content}}
+						<small>{{message.time}}</small>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<input type="text" v-model="newMessage" class="newMessage" @keypress.13="send()">
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
