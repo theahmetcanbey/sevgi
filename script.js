@@ -6,6 +6,7 @@ socket.emit("setName", socket.name);
 socket.emit("getUsers");
 
 socket.on('connect', function(){
+	console.log("Connected (:");
 	socket.on('listen', function(a){
 		a.n == "users" ? rootContent.users = a.users : 1;
 		a.n == "message" ? addMessage(a) : 1;
