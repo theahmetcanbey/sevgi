@@ -49,7 +49,7 @@ function generateMessage(username){
 		from: socket.name,
 		to: rootContent.selectedUser,
 		content: rootContent.newMessage,
-		time: new Date()
+		time: new Date() / 1000 | 0 + ""
 	}
 	addMessage(a);
 	rootContent.newMessage = "";
@@ -93,7 +93,8 @@ rootContent = new Vue({
 			}else alert("İsim değiştirilmedi, eski isim ile yeni isim aynı görünüyor.");
 		},
 		getHi: function (a){
-			return date("H:i", a / 1000 | 0);
+			a *= 1;
+			return date("H:i", a);
 		}
 	}
 });
