@@ -40,7 +40,7 @@
 				<div v-for="message in messages">
 					<div class="message" :class="{'meMessage': message.from == socket.name, 'notMeMessage': message.from != socket.name}">
 						{{message.content}}
-						<small>{{message.time}}</small>
+						<small>{{message.time.getHours()}}:{{message.time.getMinutes()}}</small>
 					</div>
 					<div class="clear"></div>
 				</div>
