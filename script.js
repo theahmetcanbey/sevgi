@@ -28,6 +28,7 @@ function focusBottom(id){
 }
 
 function addMessage(a){
+	a.time = new Date(a.time) / 1000 | 0;
 	db = get("db") || {};
 	otherUser = socket.name != a.from ? a.from : a.to;
 	if(db[otherUser] == undefined){
@@ -93,7 +94,9 @@ rootContent = new Vue({
 			}else alert("İsim değiştirilmedi, eski isim ile yeni isim aynı görünüyor.");
 		},
 		getHi: function (a){
+			console.log(a);
 			a *= 1;
+			console.log(a);
 			return date("H:i", a);
 		}
 	}
