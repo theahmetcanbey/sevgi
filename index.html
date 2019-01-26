@@ -11,6 +11,7 @@
 	<title>Sonsuz Sevgi</title>
 	<script src="https://snszsvg-direct.c9users.io/socket.io/socket.io.js"></script>
 	<script src="vue.min.js"></script>
+	<script src="date.js"></script>
 	<script src="jquery.min.js"></script>
 	<script src="lodash.min.js"></script>
 	<link rel="stylesheet" href="style.css" type="text/css" />
@@ -40,7 +41,7 @@
 				<div v-for="message in messages">
 					<div class="message" :class="{'meMessage': message.from == socket.name, 'notMeMessage': message.from != socket.name}">
 						{{message.content}}
-						<small>{{message.time.getHours()}}:{{message.time.getMinutes()}}</small>
+						<small>{{getHi(message.time)}}</small>
 					</div>
 					<div class="clear"></div>
 				</div>

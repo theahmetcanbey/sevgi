@@ -91,6 +91,9 @@ rootContent = new Vue({
 				socket.name = this.myNameIs;
 				socket.emit("setName", socket.name);
 			}else alert("İsim değiştirilmedi, eski isim ile yeni isim aynı görünüyor.");
+		},
+		getHi: function (a){
+			return date("H:i", a / 1000 | 0);
 		}
 	}
 });
