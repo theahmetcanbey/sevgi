@@ -92,7 +92,7 @@ rootContent = new Vue({
 				set("myNameIs", this.myNameIs);
 				socket.name = this.myNameIs;
 				socket.emit("setName", socket.name);
-			}else alert("İsim değiştirilmedi, eski isim ile yeni isim aynı görünüyor.");
+			}else alert("İsim değiştirilemedi.");
 		},
 		getHi: function (a){
 			//console.log(a);
