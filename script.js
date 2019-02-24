@@ -1,4 +1,4 @@
-socket = io.connect("https://snszsvg-direct.c9users.io");
+socket = io.connect("http://34.73.72.105:9999");
 
 socket.name = get("myNameIs") || "Anonim";
 socket.emit("setName", socket.name);
