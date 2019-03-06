@@ -29,7 +29,7 @@
 		<div class="container">
 			<b>Adım: {{socket.name}}</b>
 			<input type="text" v-model="myNameIs" @keypress.13="defineMyNameIs()">
-			<input type="button" value="Olsun" @click="defineMyNameIs()">
+			<input type="button" value="Olsun" @click="defineMyNameIs()" onclick="_gaq.push(['_trackEvent', 'name', 'test']);">
 		</div>
 		<div class="container">
 			<b>Kullanıcılar</b>
