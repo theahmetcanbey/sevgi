@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ribony.com:8427/socket.io/socket.io.js"></script>
+	<script>
+	io.transports = ['xhr-polling'];
+	var socket = io.connect("https://ribony.com:8427", {'sync disconnect on unload': true});
+	socket.on('connect_failed', function () {
+		console.log("connect_failed");
+	});
+	socket.on('reconnect_failed', function () {
+		console.log("reconnect_failed");
+	});
+	socket.on('reconnect', function () {
+		console.log("reconnect");
+	});
+	socket.on('connect', function () {
+		console.log("connect");
+	});
+	</script>
+</head>
+<body>
+	<script>
+	mesaj = "https://twitter.com/ahmetcanbey35";
+	$.post('https://ribony.com/socket/get_online_users', {city: ''}, function(a){
+		var regex = /(.*?)href=\"(.*?)\"(.*?)<img(.*?)src=\"(.*?)\"(.*?)title=\"(.*?)\"(.*?)/mg;
+		var m;
+		while ((m = regex.exec(a)) !== null) {
+			if (m.index === regex.lastIndex) {
+				regex.lastIndex++;
+			}
+			for(groupIndex in m){
+				if(groupIndex == 2){
+					socket.emit('mesajgonder',{
+						mesaj: mesaj,
+						alan: m[groupIndex],
+						gonderen: "anon",
+						g_token: "",
+						g_username: ""
+					});
+					console.log(m[groupIndex] + " gönderildi.");
+				}
+			}
+		}
+	});
+	socket.on("listele", function(a){
+		str = JSON.stringify(a,2,2);
+		console.log(a.gonderen + ": " + a.mesaj);
+	});
+	</script>
+</body>
+</html>
